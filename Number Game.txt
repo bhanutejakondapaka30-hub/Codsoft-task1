@@ -1,0 +1,38 @@
+import java.util.Random;
+
+public class NumberGameAuto {
+    public static void main(String[] args) {
+        Random random = new Random();
+        int rounds = 3; // number of auto-play rounds
+        int totalScore = 0;
+
+        System.out.println("🎯 Number Guessing Game (Auto Mode)\n");
+
+        for (int r = 1; r <= rounds; r++) {
+            int number = random.nextInt(100) + 1; // correct number
+            int guess = 0;
+            int attempts = 0;
+
+            System.out.println("Round " + r + " started...");
+
+            // auto guessing loop
+            while (guess != number) {
+                guess = random.nextInt(100) + 1; // computer makes a random guess
+                attempts++;
+
+                if (guess == number) {
+                    System.out.println("✅ Correct guess: " + guess + " (in " + attempts + " attempts)");
+                    totalScore++;
+                } else if (guess < number) {
+                    System.out.println("Guess " + guess + " is too low");
+                } else {
+                    System.out.println("Guess " + guess + " is too high");
+                }
+            }
+
+            System.out.println("----------------------");
+        }
+
+        System.out.println("🏁 Game Over! Total rounds won: " + totalScore + "/" + rounds);
+    }
+}
